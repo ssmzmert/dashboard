@@ -9,8 +9,7 @@ const login = async (credentials) => {
   try {
     connectToDB();
     const user = await User.findOne({ username: credentials.username });
-    if (!user || !user.isAdmin) throw new Error("Wrong credentials!");
-
+    if (!user || !user.isActive) throw new Error("Wrong credentials!");
     const isPasswordCorrect = await bcrypt.compare(
       credentials.password,
       user.password
@@ -43,6 +42,7 @@ export const { signIn, signOut, auth } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
+        token.isAdmin = user.isAdmin;
         token.username = user.username;
         token.img = user.img;
       }
@@ -50,6 +50,7 @@ export const { signIn, signOut, auth } = NextAuth({
     },
     async session({ session, token }) {
       if (token) {
+        session.user.isAdmin = token.isAdmin;
         session.user.username = token.username;
         session.user.img = token.img;
       }
