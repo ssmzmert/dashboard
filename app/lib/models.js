@@ -73,6 +73,23 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+const departmentSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  { timestamps: true }
+);
+
 export const User = mongoose.models.User || mongoose.model("User", userSchema);
+export const Department =
+  mongoose.models.Department || mongoose.model("Department", departmentSchema);
 export const Product =
   mongoose.models.Product || mongoose.model("Product", productSchema);

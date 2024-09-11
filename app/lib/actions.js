@@ -1,6 +1,6 @@
 "use server";
 import { revalidatePath } from "next/cache";
-import { Product, User } from "./models";
+import { Department, Product, User } from "./models";
 import { connectToDB } from "./utils";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
@@ -132,6 +132,73 @@ export const updateProduct = async (formData) => {
 
   revalidatePath("/dashboard/products");
   redirect("/dashboard/products");
+};
+
+export const addDepartment = async (formData) => {
+  "use server";
+
+  const { name, isActive } = Object.fromEntries(formData);
+  console.log(name, isActive);
+  try {
+    connectToDB();
+
+    const newDepartment = new Department({
+      name,
+      isActive,
+    });
+
+    await newDepartment.save();
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to create a department!");
+  }
+
+  revalidatePath("/dashboard/departments");
+  redirect("/dashboard/departments");
+};
+
+export const updateDepartment = async (formData) => {
+  "use server";
+
+  const { id, name, isActive } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+
+    const updateFields = {
+      name,
+      isActive,
+    };
+
+    Object.keys(updateFields).forEach(
+      (key) =>
+        (updateFields[key] === "" || undefined) && delete updateFields[key]
+    );
+
+    await Department.findByIdAndUpdate(id, updateFields);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to update a department!");
+  }
+
+  revalidatePath("/dashboard/departments");
+  redirect("/dashboard/departments");
+};
+
+export const deleteDepartment = async (formData) => {
+  "use server";
+
+  const { id } = Object.fromEntries(formData);
+
+  try {
+    connectToDB();
+    await Department.findByIdAndDelete(id);
+  } catch (err) {
+    console.log(err);
+    throw new Error("Failed to delete a department!");
+  }
+
+  revalidatePath("/dashboard/departments");
 };
 
 export const deleteProduct = async (formData) => {
