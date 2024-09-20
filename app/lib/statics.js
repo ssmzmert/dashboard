@@ -1,0 +1,15 @@
+export const departmentList = [
+  { id: 1, name: "Enjeksiyon" },
+  { id: 2, name: "Polisaj" },
+  { id: 3, name: "CNC" },
+  { id: 4, name: "Lazer" },
+  { id: 5, name: "Presshane" },
+  { id: 6, name: "Abkant" },
+  { id: 7, name: "Boru Bukme" },
+  { id: 8, name: "Kaynakhane" },
+  { id: 9, name: "Paslanmaz Kaynak" },
+  { id: 10, name: "Montaj 1" },
+  { id: 11, name: "Paket 1" },
+  { id: 12, name: "Montaj 2" },
+  { id: 13, name: "Paket 2" },
+];

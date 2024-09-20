@@ -1,0 +1,109 @@
+.departmentSelector {
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 100%;
+    
+}
+
+.departmentList {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.selectedDepartmentList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.departmentList li,
+.selectedDepartment {
+    gap: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--bg);
+    border: 2px solid #2e374a;
+    color: var(--text);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.selectBtn,
+.moveBtn,
+.addSubcategoryBtn {
+    padding: 15px 20px;
+    background-color: teal;
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deselectBtn {
+    padding: 15px 20px;
+    background-color: rgba(4, 73, 73, 0.979);
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.selectBtn:hover,
+.deselectBtn:hover,
+.moveBtn:hover,
+.addSubcategoryBtn:hover {
+    background-color: #006d5b;
+}
+
+.subcategories {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.subcategories h4 {
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.subcategoryLi {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    min-width: 250px;
+}
+
+.subcategoryInput {
+    padding: 20px;
+    background-color: var(--bg);
+    border: 2px solid #2e374a;
+    color: var(--text);
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 45%;
+}
+
+.subcategoryInput[type="text"] {
+    width: 50%;
+}
+
+.button {
+    background-color: teal;
+    padding: 20px;
+    color: var(--text);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #006d5b;
+}

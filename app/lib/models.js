@@ -41,33 +41,29 @@ const userSchema = new mongoose.Schema(
 
 const productSchema = new mongoose.Schema(
   {
-    title: {
+    code: {
       type: String,
       required: true,
       unique: true,
     },
-    desc: {
+    product: {
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
-      required: true,
-      min: 0,
+    productModel: {
+      type: String,
     },
-    stock: {
-      type: Number,
-      required: true,
-      min: 0,
+    brand: {
+      type: String,
+    },
+    model: {
+      type: String,
+    },
+    departments: {
+      type: Object,
     },
     img: {
-      type: String,
-    },
-    color: {
-      type: String,
-    },
-    size: {
-      type: String,
+      type: Object,
     },
   },
   { timestamps: true }

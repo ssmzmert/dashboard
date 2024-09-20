@@ -1,29 +1,77 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import styles from "../../../ui/dashboard/products/addProduct/addProduct.module.css";
 import { addProduct } from "../../../lib/actions";
+import DepartmentSelector from "../../../ui/dashboard/department-selector/department-selector";
+
+async function formAction(data) {
+  const code = data.get("code").valueOf();
+  const product = data.get("product").valueOf();
+  const productModel = data.get("productModel").valueOf();
+  const brand = data.get("brand").valueOf();
+  const model = data.get("model").valueOf();
+  const selectedDepartments = JSON.parse(data.get("selectedDepartments"));
+
+  const dataModel = {
+    code: code,
+    product: product,
+    productModel: productModel,
+    brand: brand,
+    model: model,
+    departments: selectedDepartments,
+  };
+  addProduct(dataModel);
+}
 
 const AddProductPage = () => {
+  const [selectedDepartments, setSelectedDepartments] = useState([]);
+
   return (
     <div className={styles.container}>
-      <form action={addProduct} className={styles.form}>
-        <input type="text" placeholder="title" name="title" required />
-        <select name="cat" id="cat">
-          <option value="general">Choose a Category</option>
-          <option value="kitchen">Kitchen</option>
-          <option value="phone">Phone</option>
-          <option value="computer">Computer</option>
-        </select>
-        <input type="number" placeholder="price" name="price" />
-        <input type="number" placeholder="stock" name="stock" />
-        <input type="text" placeholder="color" name="color" />
-        <input type="text" placeholder="size" name="size" />
-        <textarea
-          name="desc"
-          id="desc"
-          rows={16}
-          placeholder="Description"
-        ></textarea>
-        <button type="submit">Submit</button>
+      <form action={formAction} className={styles.form}>
+        <input
+          type="hidden"
+          name="selectedDepartments"
+          value={JSON.stringify(selectedDepartments)}
+        />
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Ürün Kodu"
+          name="code"
+          required
+        />
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Ürün"
+          name="product"
+        />
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Ürün Model"
+          name="productModel"
+        />
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Marka"
+          name="brand"
+        />
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Model"
+          name="model"
+        />
+        <DepartmentSelector
+          selectedDepartments={selectedDepartments}
+          setSelectedDepartments={setSelectedDepartments}
+        />
+        <button className={styles.button} type="submit">
+          Kaydet
+        </button>
       </form>
     </div>
   );

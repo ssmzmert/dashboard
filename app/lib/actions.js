@@ -76,19 +76,18 @@ export const updateUser = async (formData) => {
 export const addProduct = async (formData) => {
   "use server";
 
-  const { title, desc, price, stock, color, size } =
-    Object.fromEntries(formData);
+  const { code, product, productModel, brand, model, departments } = formData;
 
   try {
     connectToDB();
 
     const newProduct = new Product({
-      title,
-      desc,
-      price,
-      stock,
-      color,
-      size,
+      code,
+      product,
+      productModel,
+      brand,
+      model,
+      departments,
     });
 
     await newProduct.save();
