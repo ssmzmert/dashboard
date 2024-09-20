@@ -23,11 +23,11 @@ const ProductsPage = async ({ searchParams }) => {
       <table className={styles.table}>
         <thead>
           <tr>
-            <td>Title</td>
-            <td>Description</td>
-            <td>Price</td>
-            <td>Created At</td>
-            <td>Stock</td>
+            <td>İsim</td>
+            <td>Kod</td>
+            <td>Ürün Model</td>
+            <td>Marka</td>
+            <td>Marka Model</td>
             <td>Action</td>
           </tr>
         </thead>
@@ -43,13 +43,13 @@ const ProductsPage = async ({ searchParams }) => {
                     height={40}
                     className={styles.productImage}
                   />
-                  {product.title}
+                  {product.product}
                 </div>
               </td>
-              <td>{product.desc}</td>
-              <td>{product.price}</td>
-              <td>{product.createdAt?.toString().slice(4, 16)}</td>
-              <td>{product.stock}</td>
+              <td>{product.code}</td>
+              <td>{product.productModel}</td>
+              <td>{product.brand}</td>
+              <td>{product.model}</td>
               <td>
                 <div className={styles.buttons}>
                   <Link href={`/dashboard/products/${product.id}`}>

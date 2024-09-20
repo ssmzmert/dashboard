@@ -47,7 +47,7 @@
 
 .deselectBtn {
     padding: 15px 20px;
-    background-color: rgba(4, 73, 73, 0.979);
+    background-color: rgba(145, 0, 0, 0.979);
     color: var(--text);
     border: none;
     border-radius: 5px;
@@ -56,10 +56,14 @@
 }
 
 .selectBtn:hover,
-.deselectBtn:hover,
 .moveBtn:hover,
 .addSubcategoryBtn:hover {
     background-color: #006d5b;
+}
+
+.deselectBtn:hover {
+    background-color: rgba(192, 4, 4, 0.979);
+
 }
 
 .subcategories {

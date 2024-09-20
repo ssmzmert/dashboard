@@ -103,19 +103,19 @@ export const addProduct = async (formData) => {
 export const updateProduct = async (formData) => {
   "use server";
 
-  const { id, title, desc, price, stock, color, size } =
+  const { id, code, product, productModel, brand, model, departments } =
     Object.fromEntries(formData);
 
   try {
     connectToDB();
 
     const updateFields = {
-      title,
-      desc,
-      price,
-      stock,
-      color,
-      size,
+      code,
+      product,
+      productModel,
+      brand,
+      model,
+      departments: JSON.parse(departments),
     };
 
     Object.keys(updateFields).forEach(

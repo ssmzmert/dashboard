@@ -34,7 +34,7 @@
     flex-direction: column;
 }
 
-.form input, .form textarea, .form select{
+.input, .textarea, .select{
     padding: 20px;
     border: 2px solid #2e374a;
     border-radius: 5px;
@@ -43,11 +43,11 @@
     margin: 10px 0px;
 }
 
-.form label{
+.label{
     font-size: 12px;
 }
 
-.form button{
+.button{
     width: 100%;
     padding: 20px;
     background-color: teal;
